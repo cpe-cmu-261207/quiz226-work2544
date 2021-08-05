@@ -34,7 +34,6 @@ check=!check;
 // more codes for Search and Reset buttons here
 search_btn.onclick=()=>{
  var myInput=Number(length.value);
-  var myindex=[]
    var highlighttext=""
 for (let indexi = 0; indexi < eachword.length; indexi++) {
   const element = eachword[indexi];
@@ -50,28 +49,22 @@ for (let indexi = 0; indexi < eachword.length; indexi++) {
   }
   wordnosym.push(temp)
 }
+console.log(wordnosym)
 
-for (let index = 0; index < wordnosym.length; index++) {
-  const element = wordnosym[index];
-  if(myInput===element.length)
-  {
-  myindex.push(index)
-  }
-}
-console.log(myindex)
+
+
 for (let index = 0; index <eachword.length; index++) {
-  const element = eachword[index];
-  if(myindex.find(x=>x==index))
+  const element = wordnosym[index];
+  if(element.length>=myInput)
   {
     
-highlighttext+="<mark style='background-color:"+color.value+"'>"+element+"</mark>"+" "
+highlighttext+="<span style='color:"+color.value+"'>"+eachword[index]+"</span>"+" "
   }
   else
   {
-highlighttext+=element+" "
+highlighttext+=eachword[index]+" "
   }
 }
-console.log(color.value)
 mytext.innerHTML=highlighttext
 }
 
